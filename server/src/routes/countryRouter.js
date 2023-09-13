@@ -1,10 +1,10 @@
 const { Router } = require("express");
 const router = Router();    
-const countriesService = require("../service/countriesServices");
+const getCountries =require("../controllers/getCountries")
 
 router.get("/allCountries", async (req, res) => {
     try {
-        const countries = await countriesService.getCountriesService();
+        const countries = await getCountries.getCountries();
         res.status(200).json(countries);
     } catch (error) {
         console.error(error); // Registra el error en la consola para propósitos de depuración

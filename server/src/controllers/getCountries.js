@@ -11,7 +11,7 @@ const getCountries = async () => {
         name: countryData.name.common,
         flag: countryData.flags.svg,
         continent: countryData.region,
-        // capital: capital,
+     //   capital: countryData.capital,
 
         subregion: countryData.subregion,
         area: countryData.area,
