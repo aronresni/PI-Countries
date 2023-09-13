@@ -1,4 +1,4 @@
-const getCountryByName = require("../controllers/getCountryByName")
+const getCountryByName = require("../../controllers/Countries/getCountryByName")
 
 const getCountriesByNameHandler = async (req, res) => {
     const name = req.query.name;
