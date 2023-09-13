@@ -11,3 +11,6 @@ router.get("/allCountries", async (req, res) => {
         res.status(500).json({ error: "Internal server error" }); // Responde con un mensaje de error al cliente
     }
 });
+
+
+module.exports = router

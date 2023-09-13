@@ -1,21 +1,35 @@
 const axios = require("axios");
-const {Country} = require("../db")
+const { Country } = require("../db");
 
-const getCountries = async()=>{
-        try{
-            const countriesFromdB = await Country.findAll();
+const getCountries = async () => {
+  try {
+    const response = await axios.get("http://localhost:5000/countries");
 
-            if(countriesFromdB.length === 0){
-                const countriesFromApi = await axios.get("https://localhost:5000/countries")
-                return countriesFromApi.data;
-            }
-        }catch(err){
-            return err;
-        }
-}
+    for (const countryData of response.data) {
+      await Country.create({
+        id: countryData.cca2,
+        name: countryData.name.common,
+        flag: countryData.flags.svg,
+        continent: countryData.region,
+        // capital: capital,
+
+        subregion: countryData.subregion,
+        area: countryData.area,
+        population: countryData.population,
+      });
+    }
+    const countries = await Country.findAll();
+    return countries
+
+
+  } catch (error) {
+    console.log("Error al obtener y guardar países", error);
+    throw error;
+  }
+};
 
 
 
 module.exports = {
-    getCountries
-}
+  getCountries,
+};
