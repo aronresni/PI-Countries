@@ -9,13 +9,16 @@ const postActivity = async (name, difficulty, duration, season, countries) => {
             duration,
             season
         })
-        let countryFind = await Country.findAll({
-            where: { name: countries }
-        })
-        return await newActivity.country(countryFind)
+        const countryInstances = await Country.findAll({
+            where: { name: countries },
+        });
+        await newActivity.setCountries(countryInstances);
+
+        return newActivity;
     }
     catch (error) {
-        return (error)
+        console.error("Error al crear la actividad turística:", error);
+        throw error; 
     }
 
 }
