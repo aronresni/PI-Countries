@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom"
-import {getCountries} from '../../redux/actions/actions';
+import { getCountries } from '../../redux/actions/actions';
+import "./CountriesCard.css"
 
 
 
@@ -15,13 +16,16 @@ const CountriesCard = () => {
 
 
     return (
-        <div>
+        <div className='container'>
             {countries.map(country => (
-                <div key={country.id} className="country-card">
+                <div key={country.id} className="card">
                     <Link to={`/country/${country.id}`}>
-                        <img src={country.flag} alt={country.name} />
+                        <img src={country.flag} alt={country.name} className="img-card" />
                         <h2>{country.name}</h2>
                         <p>Population: {country.population}</p>
+                        <p>Continent: {country.continent}</p>
+                        <p>Region: {country.subregion}</p>
+                        <p>Area: {country.area}m</p>
                     </Link>
                 </div>
             ))}
