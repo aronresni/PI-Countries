@@ -25,7 +25,7 @@ const CountriesCard = () => {
                         <p>Population: {country.population}</p>
                         <p>Continent: {country.continent}</p>
                         <p>Region: {country.subregion}</p>
-                        <p>Area: {country.area}m</p>
+                        <p>Area: {country.area}</p>
                     </Link>
                 </div>
             ))}

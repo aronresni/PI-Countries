@@ -14,13 +14,15 @@ const CardDetail = () => {
     return (
         <div className='container'>
             <div key={country.id}>
+                <img src={country.flag} />
                 <h2>{country.name}</h2>
                 <p>Capital: {country.capital}</p>
+                <p>subregion: {country.subregion}</p>
 
 
             </div>
 
-            <Link to="/countries">Volver a la lista de países</Link>
+            <Link to="/home">Volver a la lista de países</Link>
         </div>
     )
 }
