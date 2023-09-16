@@ -1,9 +1,10 @@
 import React from 'react'
-import CountriesCard from '../components/CountriesCard/CountriesCard'
+import { CountriesCard, NavBar } from '../components/index.js'
 
 const Home = () => {
   return (
     <div>
+      <NavBar />
       <CountriesCard />
     </div>
   )
