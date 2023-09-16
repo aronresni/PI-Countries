@@ -1,2 +1,4 @@
 export const GET_COUNTRIES = "GET_COUNTRIES"
 export const FAIL = "FAIL"
+export const GET_COUNTRIES_BY_NAME = "GET_COUNTRIES_BY_NAME"
+export const GET_COUNTRIES_BY_ID = "GET_COUNTRIES_BY_ID"

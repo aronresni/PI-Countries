@@ -1,15 +1,15 @@
-// countriesReducer.js
-
-import { GET_COUNTRIES, FAIL } from "./actions/constants";
+import { GET_COUNTRIES, FAIL, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME } from "./actions/constants";
 
 const initialState = {
     countries: [],
     error: null,
 };
 
-const getCountries = (state = initialState, action) => {
+const countriesReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_COUNTRIES:
+        case GET_COUNTRIES_BY_NAME:
+        case GET_COUNTRIES_BY_ID:
             return {
                 ...state,
                 countries: action.payload,
@@ -25,4 +25,9 @@ const getCountries = (state = initialState, action) => {
     }
 };
 
-export default getCountries;
+
+
+
+
+
+export default countriesReducer;
