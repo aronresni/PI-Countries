@@ -18,6 +18,7 @@ const CardDetail = () => {
                 <h2>{country.name}</h2>
                 <p>Capital: {country.capital}</p>
                 <p>subregion: {country.subregion}</p>
+                
 
 
             </div>
