@@ -19,7 +19,7 @@ const FormPage = () => {
                 <label>
                     Clasificacion:
 
-                    <form>
+                    <div>
                         <p className="clasificacion">
                             <input
                                 id="radio1"
@@ -67,7 +67,7 @@ const FormPage = () => {
                             />
                             <label htmlFor="radio5">★</label>
                         </p>
-                    </form>
+                    </div>
                 </label>
             </div>
             <label>

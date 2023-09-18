@@ -2,6 +2,10 @@ import axios from "axios"
 import { GET_COUNTRIES, FAIL, GET_COUNTRIES_BY_NAME, GET_COUNTRIES_BY_ID, POST_ACTIVITY, GET_ACTIVITIES } from "./constants"
 
 const endpoint = "http://localhost:3001/countries"
+
+export const clearCountryData = () => ({
+    type: 'CLEAR_COUNTRY_DATA',
+  });
 export const getCountries = () => {
     return async function (dispatch) {
         try {

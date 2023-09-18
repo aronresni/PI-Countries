@@ -1,3 +1,4 @@
+export const CLEAR_COUNTRY_DATA = "CLEAR_COUNTRY_DATA"
 export const GET_COUNTRIES = "GET_COUNTRIES"
 export const FAIL = "FAIL"
 export const GET_COUNTRIES_BY_NAME = "GET_COUNTRIES_BY_NAME"
