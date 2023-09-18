@@ -9,7 +9,7 @@ const Filters = () => {
     function handleFilter(e) {
         dispatch(filterContinent(e.target.value))
     }
-    
+
     return (
         <div>
             <select className='filter-region' onChange={handleFilter}>

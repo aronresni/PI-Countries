@@ -75,10 +75,7 @@ export const postActivity = (payload) => {
 }
 
 export const filterContinent = (payload) => {
-    return {
-        type: FILTER_BY_CONTINENT,
-        payload
-    }
+    return { type: FILTER_BY_CONTINENT, payload }
 }
 
 
