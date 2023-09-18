@@ -1,10 +1,11 @@
 import React from 'react'
-import { CardDetail } from '../components/index.js'
+import { CardDetail, NavBar } from '../components/index.js'
 
 
 const DetailPage = () => {
     return (
         <div>
+            <NavBar />
             <CardDetail />
         </div>
     )

@@ -1,12 +1,14 @@
 import React from 'react'
-import { CountriesCard, NavBar } from '../components/index.js'
+import { CountriesCard, Filters, NavBar } from '../components/index.js'
 
 const Home = () => {
   return (
-    <div>
+    <>
+
       <NavBar />
+      <Filters />
       <CountriesCard />
-    </div>
+    </>
   )
 }
 

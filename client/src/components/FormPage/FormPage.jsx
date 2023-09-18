@@ -7,6 +7,19 @@ const FormPage = () => {
     const handleEstrellaChange = (event) => {
         setValorEstrella(event.target.value);
     };
+    const initialForm = {
+        name: "",
+        description: "",
+        difficulty: "",
+        duration: "",
+        season: "",
+        countries: [],
+    };
+    const initialCountriesForm = {
+        current: "",
+        selected: [],
+        ids: [],
+    }
 
 
     return (
@@ -15,61 +28,59 @@ const FormPage = () => {
                 Name:
                 <input type="name" />
             </label>
-            <div>
-                <label>
-                    Clasificacion:
 
-                    <div>
-                        <p className="clasificacion">
-                            <input
-                                id="radio1"
-                                type="radio"
-                                name="estrellas"
-                                value="5"
-                                onChange={handleEstrellaChange}
-                                checked={valorEstrella === '5'}
-                            />
-                            <label htmlFor="radio1">★</label>
-                            <input
-                                id="radio2"
-                                type="radio"
-                                name="estrellas"
-                                value="4"
-                                onChange={handleEstrellaChange}
-                                checked={valorEstrella === '4'}
-                            />
-                            <label htmlFor="radio2">★</label>
-                            <input
-                                id="radio3"
-                                type="radio"
-                                name="estrellas"
-                                value="3"
-                                onChange={handleEstrellaChange}
-                                checked={valorEstrella === '3'}
-                            />
-                            <label htmlFor="radio3">★</label>
-                            <input
-                                id="radio4"
-                                type="radio"
-                                name="estrellas"
-                                value="2"
-                                onChange={handleEstrellaChange}
-                                checked={valorEstrella === '2'}
-                            />
-                            <label htmlFor="radio4">★</label>
-                            <input
-                                id="radio5"
-                                type="radio"
-                                name="estrellas"
-                                value="1"
-                                onChange={handleEstrellaChange}
-                                checked={valorEstrella === '1'}
-                            />
-                            <label htmlFor="radio5">★</label>
-                        </p>
-                    </div>
-                </label>
-            </div>
+            <label>
+                Clasificacion:
+                <p className="clasificacion">
+                    <input
+                        id="radio1"
+                        type="radio"
+                        name="estrellas"
+                        value="5"
+                        onChange={handleEstrellaChange}
+                        checked={valorEstrella === '5'}
+                    />
+                    <label htmlFor="radio1">★</label>
+                    <input
+                        id="radio2"
+                        type="radio"
+                        name="estrellas"
+                        value="4"
+                        onChange={handleEstrellaChange}
+                        checked={valorEstrella === '4'}
+                    />
+                    <label htmlFor="radio2">★</label>
+                    <input
+                        id="radio3"
+                        type="radio"
+                        name="estrellas"
+                        value="3"
+                        onChange={handleEstrellaChange}
+                        checked={valorEstrella === '3'}
+                    />
+                    <label htmlFor="radio3">★</label>
+                    <input
+                        id="radio4"
+                        type="radio"
+                        name="estrellas"
+                        value="2"
+                        onChange={handleEstrellaChange}
+                        checked={valorEstrella === '2'}
+                    />
+                    <label htmlFor="radio4">★</label>
+                    <input
+                        id="radio5"
+                        type="radio"
+                        name="estrellas"
+                        value="1"
+                        onChange={handleEstrellaChange}
+                        checked={valorEstrella === '1'}
+                    />
+                    <label htmlFor="radio5">★</label>
+                </p>
+
+            </label>
+
             <label>
                 Duracion:
                 <input type="duracion" />

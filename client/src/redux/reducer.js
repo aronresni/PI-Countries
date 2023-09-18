@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITIES, POST_ACTIVITY, FILTER_BY_CONTINENT, CLEAR_COUNTRY_DATA } from "./actions/constants";
+import { GET_COUNTRIES, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITIES, POST_ACTIVITY, FILTER_BY_CONTINENT } from "./actions/constants";
 
 const initialState = {
     countries: [],
@@ -43,12 +43,6 @@ const countriesReducer = (state = initialState, action) => {
                 ...state,
                 countries: filterContinent
             }
-        case CLEAR_COUNTRY_DATA:
-            return {
-                ...state,
-                countries: null,
-            };
-
         default:
             return { ...state }
     };

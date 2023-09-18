@@ -12,13 +12,13 @@ const CardDetail = () => {
     }, [dispatch, id]);
 
     return (
-        <div className='container'>
-            <div key={country.id}>
+        <div className='card-container'>
+            <div key={country.id} className="card">
                 <img src={country.flag} />
                 <h2>{country.name}</h2>
                 <p>Capital: {country.capital}</p>
                 <p>subregion: {country.subregion}</p>
-                
+
 
 
             </div>
