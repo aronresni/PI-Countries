@@ -1,18 +1,20 @@
 import React, { useEffect, } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom"
-import { getCountries, clearCountryData } from '../../redux/actions/actions';
+import { getCountries } from '../../redux/actions/actions';
 import "./CountriesCard.css"
 
 
 
 const CountriesCard = () => {
     const dispatch = useDispatch();
-    const countries = useSelector(state => state.countries)
+    const countries = useSelector(state => state.allCountries)
+
 
     useEffect(() => {
         dispatch(getCountries())
     }, [dispatch]);
+
 
 
     return (
