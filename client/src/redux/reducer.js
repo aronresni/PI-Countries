@@ -1,33 +1,55 @@
-import { GET_COUNTRIES, FAIL, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME } from "./actions/constants";
+import { GET_COUNTRIES, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITIES, POST_ACTIVITY, FILTER_BY_CONTINENT } from "./actions/constants";
 
 const initialState = {
     countries: [],
+    allCountries: [],
+    country: [],
+    activities: [],
     error: null,
 };
 
 const countriesReducer = (state = initialState, action) => {
     switch (action.type) {
+
         case GET_COUNTRIES:
-        case GET_COUNTRIES_BY_NAME:
-        case GET_COUNTRIES_BY_ID:
             return {
                 ...state,
                 countries: action.payload,
-                error: null,
-            };
-        case FAIL:
+                allCountries: action.payload,
+            }
+        case GET_COUNTRIES_BY_ID:
             return {
                 ...state,
-                error: action.payload,
-            };
+                countries: action.payload
+            }
+        case GET_COUNTRIES_BY_NAME:
+            return {
+                ...state,
+                countries: action.payload
+            }
+        case GET_ACTIVITIES:
+            return {
+                ...state,
+                activities: action.payload
+            }
+        case POST_ACTIVITY:
+            return { ...state }
+
+
+        case FILTER_BY_CONTINENT:
+            const allCountries = state.allCountries;
+            const filterContinent = action.payload === "All" ? allCountries : allCountries.filter(element => element.continent === action.payload)
+            return {
+                ...state,
+                countries: filterContinent
+            }
         default:
-            return state;
-    }
-};
+            return { ...state }
+    };
+}
 
 
 
 
 
-
-export default countriesReducer;
+export default countriesReducer
