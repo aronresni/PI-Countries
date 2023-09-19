@@ -1,20 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { filterContinent, orderPopulation, orderName } from '../../redux/actions/actions'
 
 const Filters = () => {
     const activities = useSelector(state => state.activities)
     const dispatch = useDispatch();
+    const [selectedOrderName, setSelectedOrderName] = useState("Select");
+    const [selectedOrderPopulation, setSelectedOrderPopulation] = useState("Select");
+    const [selectedContinent, setSelectedContinent] = useState("All");
+
 
     function handleFilter(e) {
-        dispatch(filterContinent(e.target.value))
+        const selectedValue = e.target.value;
+        setSelectedContinent(selectedValue);
+        setSelectedOrderName("Select"); 
+        setSelectedOrderPopulation("Select"); 
+        dispatch(filterContinent(selectedValue));
     }
 
     function handleOrderPopulation(e) {
-        dispatch(orderPopulation(e.target.value))
+        const selectedValue = e.target.value;
+        setSelectedOrderPopulation(selectedValue);
+        setSelectedOrderName("Select"); 
+        setSelectedContinent("All"); 
+        dispatch(orderPopulation(selectedValue));
     }
     function handlerOrderName(e) {
-        dispatch(orderName(e.target.value))
+        const selectedValue = e.target.value;
+        setSelectedOrderName(selectedValue);
+        setSelectedOrderPopulation("Select"); 
+        setSelectedContinent("All");
+        dispatch(orderName(selectedValue));
     }
 
 
@@ -22,7 +38,7 @@ const Filters = () => {
     return (
         <>
             <div>
-                <select onChange={handlerOrderName} >
+                <select value={selectedOrderName} onChange={handlerOrderName} >
                     <option>Select</option>
                     <option value="asc">
                         Ascendent
@@ -34,7 +50,7 @@ const Filters = () => {
             </div>
 
             <div>
-                <select onChange={handleOrderPopulation} >
+                <select value={selectedOrderPopulation} onChange={handleOrderPopulation} >
                     <option>Select</option>
                     <option value="Higher">
                         Higher
@@ -48,12 +64,12 @@ const Filters = () => {
 
 
             <div>
-                <select className='filter-region' onChange={handleFilter}>
-                    <option value="All">Todos</option>
+                <select className='filter-region' value={selectedContinent} onChange={handleFilter}>
+                    <option value="All">All</option>
                     <option value="Africa">África</option>
                     <option value="Americas">América</option>
                     <option value="Asia">Asia</option>
-                    <option value="Europe">Europa</option>
+                    <option value="Europe">Europe</option>
                     <option value="Oceania">Oceanía</option>
                 </select>
             </div>

@@ -1,14 +1,13 @@
-#form {
-  width: 250px;
-  margin: 0 auto;
-  height: 50px;
-  }
+.form{
+  display: row
+
+}
   
-  #form p {
+  .form p {
     text-align: center;
   }
   
-  #form label {
+  .form label {
     font-size: 20px;
   }
   

@@ -11,7 +11,10 @@ const NavBar = () => {
             </a>
             <SearchBar />
             <div>
-                <button>ADD ACTIVITY</button>
+                <Link to="/form">
+                    <button>ADD ACTIVITY</button>
+
+                </Link>
                 <button>COUNTRIES</button>
             </div>
         </div>
