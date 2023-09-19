@@ -1,5 +1,7 @@
 import axios from "axios"
-import { GET_COUNTRIES, FAIL, GET_COUNTRIES_BY_NAME, GET_COUNTRIES_BY_ID, POST_ACTIVITY, GET_ACTIVITIES, FILTER_BY_CONTINENT } from "./constants"
+import { GET_COUNTRIES, FAIL, GET_COUNTRIES_BY_NAME, GET_COUNTRIES_BY_ID,
+     POST_ACTIVITY, GET_ACTIVITIES, FILTER_BY_CONTINENT, FILTER_BY_ACTIVITY,
+     ORDER_BY_POPULATION, ORDER_BY_NAME } from "./constants"
 
 const endpoint = "http://localhost:3001/countries"
 
@@ -65,7 +67,7 @@ export const getActivities = () => {
         })
     }
 }
-
+//POST
 export const postActivity = (payload) => {
     return async function (dispatch) {
         const json = await axios.post("/activities", payload);
@@ -73,11 +75,23 @@ export const postActivity = (payload) => {
         return dispatch({ type: POST_ACTIVITY, payload: activity })
     }
 }
-
+//FILTERS
 export const filterContinent = (payload) => {
     return { type: FILTER_BY_CONTINENT, payload }
 }
 
+export const filterActivity = (payload) => {
+    return { type: FILTER_BY_ACTIVITY, payload }
+}
+
+//ORDER
+
+export const orderName = (payload) => {
+    return { type: ORDER_BY_NAME, payload }
+}
+export const orderPopulation = (payload) => {
+    return { type: ORDER_BY_POPULATION, payload }
+}
 
 
 

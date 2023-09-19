@@ -6,9 +6,9 @@ import "./NavBar.css"
 const NavBar = () => {
     return (
         <div className="navbar">
-            <Link to="/home">
+            <a href="/home">
                 <h1>COUNTRIES APP</h1>
-            </Link>
+            </a>
             <SearchBar />
             <div>
                 <button>ADD ACTIVITY</button>
