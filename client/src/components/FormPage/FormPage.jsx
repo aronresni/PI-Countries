@@ -1,26 +1,37 @@
 import React, { useState } from 'react'
 import "./FormPage.css"
 import { postActivity, getCountries } from '../../redux/actions/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { countReset } from 'console';
 
 const FormPage = () => {
-    const [valorEstrella, setValorEstrella] = useState(null);
+    const dispatch = useDispatch();
+    const countries = useSelector(state => state.countries)
 
+    //SELECT COUNTRIES
+    const countriesList = countries.map(country => {
+        return ({
+            name: country.name,
+            flag: country.flags
+        })
+    }).sort((a, b) => a.name.localeCompare(b.name));
+
+
+    //CALIFICACION:
+    const [valorEstrella, setValorEstrella] = useState(null);
     const handleEstrellaChange = (event) => {
         setValorEstrella(event.target.value);
     };
-    const initialForm = {
+
+    //FORM
+    const [form, setForm] = useState({
         name: "",
-        description: "",
         difficulty: "",
         duration: "",
         season: "",
         countries: [],
-    };
-    const initialCountriesForm = {
-        current: "",
-        selected: [],
-        ids: [],
-    }
+
+    })
 
 
     return (
@@ -111,8 +122,15 @@ const FormPage = () => {
                     </label>
                 </div>
                 <div><label>Country
-                    <select>
+                    <select className='select-div' value={selected} onChange={event => [handleCountries(event), setSelected(event)]}>
                         <option>Select Country</option>
+                        {countriesList?.map(country => {
+                            return (
+                                <option key={country.name}>
+                                    {country.name}
+                                </option>
+                            )
+                        })}
                     </select>
 
                 </label></div>
