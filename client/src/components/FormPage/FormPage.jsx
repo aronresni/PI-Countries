@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import "./FormPage.css"
 import { postActivity, getCountries } from '../../redux/actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { countReset } from 'console';
+
+import { Link } from 'react-router-dom';
 
 const FormPage = () => {
     const dispatch = useDispatch();
@@ -12,9 +13,20 @@ const FormPage = () => {
     const countriesList = countries.map(country => {
         return ({
             name: country.name,
-            flag: country.flags
+
         })
     }).sort((a, b) => a.name.localeCompare(b.name));
+
+
+
+//Handle Form
+    const handleChange = (e) => {
+        setForm({
+            [e.target.name]: e.target.value
+        })
+    }
+//Handle Countries
+const handle
 
 
     //CALIFICACION:
@@ -36,7 +48,9 @@ const FormPage = () => {
 
     return (
         <>
-
+            <Link to="/home">
+                <button>Vovler</button>
+            </Link>
             <h1>Activity Form</h1>
             <form className='form'>
                 <div>
@@ -122,7 +136,7 @@ const FormPage = () => {
                     </label>
                 </div>
                 <div><label>Country
-                    <select className='select-div' value={selected} onChange={event => [handleCountries(event), setSelected(event)]}>
+                    <select >
                         <option>Select Country</option>
                         {countriesList?.map(country => {
                             return (
