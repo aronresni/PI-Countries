@@ -13,7 +13,6 @@ const Filters = () => {
     return (
         <div>
             <select className='filter-region' onChange={handleFilter}>
-                <option value="">Filter by Region</option>
                 <option value="All">Todos</option>
                 <option value="Africa">África</option>
                 <option value="Americas">América</option>

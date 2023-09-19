@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITIES, POST_ACTIVITY, FILTER_BY_CONTINENT } from "./actions/constants";
+import { GET_COUNTRIES, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITIES, POST_ACTIVITY, FILTER_BY_CONTINENT,ORDER_BY_NAME } from "./actions/constants";
 
 const initialState = {
     countries: [],
@@ -43,6 +43,19 @@ const countriesReducer = (state = initialState, action) => {
                 ...state,
                 countries: filterContinent
             }
+
+        case ORDER_BY_NAME:
+            const OrderCountries = [...state.allCountries];
+            const OrderCountriesAll = action.payload === `asc` ?
+                OrderCountries.sort((a, b) => a.name.localeCompare(b.name))
+                :
+                OrderCountries.sort((a, b) => b.name.localeCompare(a.name));
+            return {
+                ...state,
+                countries: OrderCountriesAll
+            }
+
+
         default:
             return { ...state }
     };

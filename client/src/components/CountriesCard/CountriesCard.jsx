@@ -18,28 +18,21 @@ const CountriesCard = () => {
 
     return (
 
-        <div>
 
-            <div>
-                <button>FILTERS</button>
-                <button>FILTERS</button>
-                <button>FILTERS</button>
-            </div>
 
-            <div className='container-cards'>
-                {countries.map(country => (
-                    <div key={country.id} className="card">
-                        <Link to={`/country/${country.id}`}>
-                            <img src={country.flag} alt={country.name} className="img-card" />
-                            <h2>{country.name}</h2>
-                            <p>Population: {country.population}</p>
-                            <p>Continent: {country.continent}</p>
-                            <p>Region: {country.subregion}</p>
-                            <p>Area: {country.area}</p>
-                        </Link>
-                    </div>
-                ))}
-            </div>
+        <div className='container-cards'>
+            {countries.map(country => (
+                <div key={country.id} className="card">
+                    <Link to={`/country/${country.id}`}>
+                        <img src={country.flag} alt={country.name} className="img-card" />
+                        <h2>{country.name}</h2>
+                        <p>Population: {country.population}</p>
+                        <p>Continent: {country.continent}</p>
+                        <p>Region: {country.subregion}</p>
+                        <p>Area: {country.area}</p>
+                    </Link>
+                </div>
+            ))}
         </div>
     )
 }
