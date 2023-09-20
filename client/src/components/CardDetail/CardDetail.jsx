@@ -19,10 +19,10 @@ const CardDetail = () => {
                 <p>Capital: {country.capital}</p>
                 <p>subregion: {country.subregion}</p>
             </div>
-            <a href="/home"><button>
+            <Link to="/home"><button>
                 Volver a la lista de países
             </button>
-            </a>
+            </Link>
         </div>
     )
 }

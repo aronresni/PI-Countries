@@ -8,12 +8,11 @@ import "./CountriesCard.css"
 
 const CountriesCard = () => {
     const dispatch = useDispatch();
-    const countries = useSelector(state => state.countries)
+    const countries = useSelector(state => state.allCountries)
 
     useEffect(() => {
         dispatch(getCountries())
     }, [dispatch]);
-
 
 
     return (

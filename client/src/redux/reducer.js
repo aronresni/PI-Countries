@@ -1,4 +1,4 @@
-import { filterActivity } from "./actions/actions";
+
 import { GET_COUNTRIES, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITIES, POST_ACTIVITY, FILTER_BY_CONTINENT, ORDER_BY_NAME, ORDER_BY_POPULATION, FILTER_BY_ACTIVITY } from "./actions/constants";
 
 const initialState = {
@@ -43,7 +43,7 @@ const countriesReducer = (state = initialState, action) => {
                 OrderCountries.sort((a, b) => b.name.localeCompare(a.name));
             return {
                 ...state,
-                countries: OrderCountriesAll
+                allCountries: OrderCountriesAll
             }
         case ORDER_BY_POPULATION:
             const orderPopulation = [...state.allCountries];
@@ -54,7 +54,7 @@ const countriesReducer = (state = initialState, action) => {
                 orderPopulation.sort((a, b) => a.population - b.population);
             return {
                 ...state,
-                countries: orderPopulation
+                allCountries: orderPop
             }
         case FILTER_BY_ACTIVITY:
             const filterActivity = [...state.allCountries];
@@ -67,7 +67,7 @@ const countriesReducer = (state = initialState, action) => {
             const filteredCountries = filterActivity.filter(obj => filteredActivities.includes(obj.name))
             return {
                 ...state,
-                countries: filteredCountries
+                allCountries: filteredCountries
             }
 
 
@@ -76,7 +76,7 @@ const countriesReducer = (state = initialState, action) => {
             const filterContinent = action.payload === "All" ? allCountries : allCountries.filter(element => element.continent === action.payload)
             return {
                 ...state,
-                countries: filterContinent
+                allCountries: filterContinent
             }
 
         default:
