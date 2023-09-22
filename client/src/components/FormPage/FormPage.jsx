@@ -151,10 +151,9 @@ const Form = () => {
                 </div>
                 <div className='input-container'>
                     <div className='label'>
-                        <label >Duration </label>
+                        <label >Duration in hours </label>
                     </div>
-                    <input className='input-div' type="text" onChange={handleChange} value={form.duration} name="duration" placeholder="Enter the duration in hours (1hs)" />
-                    {errors.duration && <p className='errors'>{errors.duration}</p>}
+                    <input className='input-div' type="text" onChange={handleChange} value={form.duration} name="duration" placeholder="Enter the duration in hours (1hs)" />                    {errors.duration && <p className='errors'>{errors.duration}</p>}
                 </div>
 
                 <div className='input-container'>
@@ -181,6 +180,7 @@ const Form = () => {
                             return (
                                 <option key={country.name}>
                                     {country.name}
+
                                 </option>
                             )
                         })}
@@ -192,6 +192,7 @@ const Form = () => {
                         return (
                             <div className='country-selector' key={country}>
                                 <p>{country}</p>
+                                <img src={country.flag} />
                                 <button className='btn-country-selector' onClick={deleteCountry} value={country}> X </button>
                             </div>
                         )

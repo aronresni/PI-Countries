@@ -6,24 +6,36 @@ const CardDetail = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
     const country = useSelector(state => state.countries)
-
     useEffect(() => {
         dispatch(getCountriesById(id))
     }, [dispatch, id]);
 
     return (
         <div>
-            <div key={country.id} >
-                <img src={country.flag} />
+            <div key={country.id}>
+                <img src={country.flag} alt={`Flag of ${country.name}`} />
                 <h2>{country.name}</h2>
                 <p>Capital: {country.capital}</p>
-                <p>subregion: {country.subregion}</p>
+                <p>Subregion: {country.subregion}</p>
             </div>
-            <Link to="/home"><button>
-                Volver a la lista de países
-            </button>
+            <div>
+                <h3>Activities:</h3>
+                <ul>
+                    {country.Activities.map((activity) => (
+                        <li key={activity.id}>
+                            <p>Name: {activity.name}</p>
+                            <p>Difficulty: {activity.difficulty}</p>
+                            <p>Duration: {activity.duration} hours</p>
+                            <p>Season: {activity.season}</p>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <Link to="/home">
+                <button>Volver a la lista de países</button>
             </Link>
         </div>
+
     )
 }
 
