@@ -1,5 +1,5 @@
 
-import { GET_COUNTRIES, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITIES, POST_ACTIVITY, FILTER_BY_CONTINENT, ORDER_BY_NAME, ORDER_BY_POPULATION, FILTER_BY_ACTIVITY } from "./actions/constants";
+import { GET_COUNTRIES, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITIES, POST_ACTIVITY, FILTER_BY_CONTINENT, ORDER_BY_NAME, ORDER_BY_POPULATION, GET_ACTIVITIES_BY_NAME } from "./actions/constants";
 
 const initialState = {
     countries: [],
@@ -56,19 +56,20 @@ const countriesReducer = (state = initialState, action) => {
                 ...state,
                 allCountries: orderPop
             }
-        case FILTER_BY_ACTIVITY:
-            const filterActivity = [...state.allCountries];
-            const activityName = action.payload;
-            const filteredActivities = state.activities
-                .filter(activity => activity.name === activityName)
-                .flatMap(activity => activity.Countries)
-                .map(country => country.name);
-
-            const filteredCountries = filterActivity.filter(obj => filteredActivities.includes(obj.name))
-            return {
-                ...state,
-                allCountries: filteredCountries
-            }
+            case GET_ACTIVITIES_BY_NAME:
+                const activityName = action.payload;
+                const filteredCountries = state.allCountries
+                    .filter(country =>
+                        country.activities.some(activity =>
+                            activity.name === activityName
+                        )
+                    );
+            
+                return {
+                    ...state,
+                    allCountries: filteredCountries,
+                };
+            
 
 
         case FILTER_BY_CONTINENT:

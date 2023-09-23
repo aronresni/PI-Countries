@@ -61,8 +61,6 @@ const Filters = () => {
                 </select>
             </div>
 
-
-
             <div>
                 <select className='filter-region' value={selectedContinent} onChange={handleFilter}>
                     <option value="All">All</option>

@@ -28,20 +28,28 @@ const CountriesCard = () => {
 
     return (
         <div className="container-cards">
-            {currentCards.map((country) => (
-                <div key={country.id} className="card">
-                    <Link to={`/country/${country.id}`}>
-                        <div className='card2'>
 
-                            <img src={country.flag} alt={country.name} className="img-card" />
-                            <h2>{country.name}</h2>
-                            <p>Population: {country.population}</p>
-                            <p>Continent: {country.continent}</p>
-                            <p>Region: {country.subregion}</p>
-                            <p>Area: {country.area}</p>
+            {currentCards.map((country) => (
+                <Link to={`/country/${country.id}`}>
+                    <div key={country.id} className="flip-card">
+                        <div className="flip-card-inner">
+                            <div className="flip-card-front">
+                                <img src={country.flag} alt={country.name} className="img-card" />
+                                <h2>{country.name}</h2>
+                            </div>
+
+
+                            <div className="flip-card-back">
+                                <p>Population: {country.population}</p>
+                                <p>Continent: {country.continent}</p>
+                                <p>Region: {country.subregion}</p>
+                                <p>Area: {country.area}</p>
+
+                            </div>
+
                         </div>
-                    </Link>
-                </div>
+                    </div>
+                </Link>
             ))}
 
             <div className="pagination">
@@ -50,7 +58,7 @@ const CountriesCard = () => {
                         <button
                             key={index}
                             onClick={() => paginate(index + 1)}
-                            className={`page-button ${currentPage === index + 1 ? 'active' : ''}`}
+                            className={`page-button ${currentPage === index + 1 ? 'active' : ''} paginado`}
                         >
                             {index + 1}
                         </button>

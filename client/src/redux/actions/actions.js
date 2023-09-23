@@ -2,15 +2,13 @@ import axios from "axios"
 import {
     GET_COUNTRIES, FAIL, GET_COUNTRIES_BY_NAME, GET_COUNTRIES_BY_ID,
     POST_ACTIVITY, GET_ACTIVITIES, FILTER_BY_CONTINENT, FILTER_BY_ACTIVITY,
-    ORDER_BY_POPULATION, ORDER_BY_NAME
+    ORDER_BY_POPULATION, ORDER_BY_NAME, GET_ACTIVITIES_BY_NAME
 } from "./constants"
 
 const countriesurl = "http://localhost:3001/countries"
 const activityurl = "http://localhost:3001/activity"
 
-export const clearCountryData = () => ({
-    type: 'CLEAR_COUNTRY_DATA',
-});
+
 export const getCountries = () => {
     return async function (dispatch) {
         try {
@@ -98,3 +96,9 @@ export const orderPopulation = (payload) => {
 
 
 
+export const getActivitiesByName = (activityName) => {
+    return {
+        type: GET_ACTIVITIES_BY_NAME,
+        payload: activityName,
+    };
+};
