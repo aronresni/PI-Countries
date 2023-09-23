@@ -28,6 +28,22 @@ const countriesReducer = (state = initialState, action) => {
                 ...state,
                 allCountries: action.payload
             }
+        case GET_ACTIVITIES_BY_NAME:
+            const activityName = action.payload.toLowerCase(); // Normalizar el nombre de actividad
+
+            // Filtrar las actividades por nombre
+            const filteredActivities = state.activities.filter(activity =>
+                activity.name.toLowerCase() === activityName
+            );
+            return {
+                ...state,
+                allCountries: filteredActivities
+            }
+
+
+
+
+
         case GET_ACTIVITIES:
             return {
                 ...state,
@@ -56,20 +72,7 @@ const countriesReducer = (state = initialState, action) => {
                 ...state,
                 allCountries: orderPop
             }
-            case GET_ACTIVITIES_BY_NAME:
-                const activityName = action.payload;
-                const filteredCountries = state.allCountries
-                    .filter(country =>
-                        country.activities.some(activity =>
-                            activity.name === activityName
-                        )
-                    );
-            
-                return {
-                    ...state,
-                    allCountries: filteredCountries,
-                };
-            
+
 
 
         case FILTER_BY_CONTINENT:

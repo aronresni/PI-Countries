@@ -18,9 +18,10 @@ const SearchBar = () => {
         if (searchType === "Countries") {
             dispatch(getCountriesByName(inputValue));
         } else if (searchType === "Activities") {
-            dispatch(getActivitiesByName(inputValue));
+            dispatch(getActivitiesByName(inputValue)); // Aquí despachamos la acción para buscar países por actividad
         }
     }
+   
 
     function handleTypeChange(e) {
         setSearchType(e.target.value);
