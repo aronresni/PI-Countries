@@ -31,12 +31,15 @@ const CountriesCard = () => {
             {currentCards.map((country) => (
                 <div key={country.id} className="card">
                     <Link to={`/country/${country.id}`}>
-                        <img src={country.flag} alt={country.name} className="img-card" />
-                        <h2>{country.name}</h2>
-                        <p>Population: {country.population}</p>
-                        <p>Continent: {country.continent}</p>
-                        <p>Region: {country.subregion}</p>
-                        <p>Area: {country.area}</p>
+                        <div className='card2'>
+
+                            <img src={country.flag} alt={country.name} className="img-card" />
+                            <h2>{country.name}</h2>
+                            <p>Population: {country.population}</p>
+                            <p>Continent: {country.continent}</p>
+                            <p>Region: {country.subregion}</p>
+                            <p>Area: {country.area}</p>
+                        </div>
                     </Link>
                 </div>
             ))}

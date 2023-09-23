@@ -7,15 +7,15 @@
   align-items: center;
 }
 .logo {
-  width: 90px; /* Ancho de la imagen */
-  animation: rotate 6s linear infinite; /* Aplica la animación 'rotate' de forma infinita */
+  width: 90px; 
+  animation: rotate 6s linear infinite; 
 }
 
 @keyframes rotate {
   0% {
-    transform: rotate(0deg); /* Empieza la rotación desde 0 grados */
+    transform: rotate(0deg); 
   }
   100% {
-    transform: rotate(360deg); /* Termina la rotación en 360 grados */
+    transform: rotate(360deg);
   }
 }
