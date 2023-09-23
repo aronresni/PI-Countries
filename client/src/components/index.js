@@ -3,5 +3,6 @@ import CountriesCard from "./CountriesCard/CountriesCard";
 import CardDetail from "./CardDetail/CardDetail";
 import FormPage from "./FormPage/FormPage";
 import Filters from "./Filters/Filters"
+import Footer from "./Footer/Footer";
 
-export { NavBar, CountriesCard, CardDetail, FormPage, Filters }
+export { Footer, NavBar, CountriesCard, CardDetail, FormPage, Filters }

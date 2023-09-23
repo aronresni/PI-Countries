@@ -1,15 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
 import "./NavBar.css"
+import logo from "../../assets/earth.png"
 
 const NavBar = () => {
+    const location = useLocation();
+    const isHomePage = location.pathname === '/home';
+
+
     return (
         <div className="navbar">
             <a href="/home">
-                <h1>COUNTRIES APP</h1>
+                <img className='logo' src={logo} width="100px" />
             </a>
-            <SearchBar />
+            {isHomePage && <SearchBar />}
             <div>
                 <Link to="/form">
                     <button>ADD ACTIVITY</button>

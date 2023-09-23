@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../components/Footer/Footer.jsx'
 import { CountriesCard, Filters, NavBar } from '../components/index.js'
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
       <NavBar />
       <Filters />
       <CountriesCard />
+      <Footer />
     </>
   )
 }

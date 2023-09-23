@@ -20,17 +20,22 @@ const CardDetail = () => {
             </div>
             <div>
                 <h3>Activities:</h3>
-                <ul>
-                    {country.Activities.map((activity) => (
-                        <li key={activity.id}>
-                            <p>Name: {activity.name}</p>
-                            <p>Difficulty: {activity.difficulty}</p>
-                            <p>Duration: {activity.duration} hours</p>
-                            <p>Season: {activity.season}</p>
-                        </li>
-                    ))}
-                </ul>
+                {country && country.Activities && country.Activities.length > 0 ? (
+                    <ul>
+                        {country.Activities.map((activity) => (
+                            <li key={activity.id}>
+                                <p>Name: {activity.name}</p>
+                                <p>Difficulty: {activity.difficulty}</p>
+                                <p>Duration: {activity.duration} hours</p>
+                                <p>Season: {activity.season}</p>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>No activities available for this country.</p>
+                )}
             </div>
+
             <Link to="/home">
                 <button>Volver a la lista de países</button>
             </Link>
