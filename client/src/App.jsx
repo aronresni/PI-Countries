@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import FormActivity from './Pages/FormActivity'
-import { Home, LandingPage, DetailPage } from "./Pages/index"
+import { Home, LandingPage, DetailPage, FormActivity } from "./Pages/index"
 
 
 function App() {
