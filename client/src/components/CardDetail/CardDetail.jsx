@@ -2,6 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector, } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { getCountriesById } from '../../redux/actions/actions'
+import "./CardDetail.css"
+
+
 const CardDetail = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
@@ -11,9 +14,9 @@ const CardDetail = () => {
     }, [dispatch, id]);
 
     return (
-        <div>
+        <div className='detail-container'>
             <div key={country.id}>
-                <img src={country.flag} alt={`Flag of ${country.name}`} />
+                <img className='flag-img' src={country.flag} alt={`Flag of ${country.name}`} />
                 <h2>{country.name}</h2>
                 <p>Capital: {country.capital}</p>
                 <p>Subregion: {country.subregion}</p>
