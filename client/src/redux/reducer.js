@@ -39,17 +39,13 @@ const countriesReducer = (state = initialState, action) => {
             const activityName = action.payload.toLowerCase(); 
             const filteredActivities = [...state.activities].filter(activity =>
               activity.name.toLowerCase().includes(activityName) 
-       //       {console.log(activity.name);
-       //   console.log(activityName);}
+    
                 );
                 console.log(state.activities);
             return {
                 ...state,
                 allCountries: filteredActivities
             }
-
-
-
 
 
         case GET_ACTIVITIES:
