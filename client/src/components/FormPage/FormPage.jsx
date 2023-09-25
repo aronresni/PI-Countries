@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { postActivity, getCountries } from "../../redux/actions/actions";
 import { useEffect } from "react";
+import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import validation from "./validations"
+import Swal from 'sweetalert2'
 
 const Form = () => {
 
@@ -37,6 +39,7 @@ const Form = () => {
             ...form,
             [event.target.name]: event.target.value
         }))
+
     }
 
     const handleCountries = (event) => {
@@ -82,7 +85,6 @@ const Form = () => {
         event.preventDefault();
         if (form.name === '' && form.duration === '' && form.difficulty === '' && form.season === '' && form.countries === '') return alert('Incomplete fields, please complete all fields')
         dispatch(postActivity(form))
-        alert("Activity created successfully")
         setForm({
             name: "",
             difficulty: "",
@@ -90,6 +92,13 @@ const Form = () => {
             season: "",
             countries: [],
         })
+        Swal.fire({
+            icon: 'submit',
+            title: 'Successfully created activity',
+            text: 'Create other activity or go to see countries',
+            footer: '<a href="/form"><button>Create other Activity</button></a><a href="/home"><button>Go to see countries</button></a>'
+        })
+
     }
 
     const deleteCountry = (event) => {
@@ -117,6 +126,7 @@ const Form = () => {
 
     useEffect(() => {
         dispatch(getCountries())
+
     }, [dispatch])
 
     return (
@@ -145,7 +155,7 @@ const Form = () => {
                         <option value="4">⭐️⭐️⭐️⭐️</option>
                         <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
                     </select>
-                  
+
 
                     {errors.difficulty && <p className='errors'>{errors.difficulty}</p>}
                 </div>

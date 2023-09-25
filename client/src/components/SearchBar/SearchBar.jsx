@@ -2,12 +2,12 @@
 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getActivitiesByName, getCountriesByName } from '../../redux/actions/actions'; // Importa tus acciones aquí
+import { getActivitiesByName, getCountriesByName } from '../../redux/actions/actions'; 
 
 const SearchBar = () => {
     const dispatch = useDispatch();
     const [input, setInput] = useState("");
-    const [searchType, setSearchType] = useState("Countries"); // Estado para el tipo de búsqueda
+    const [searchType, setSearchType] = useState("Countries"); 
 
     function changeHandler(e) {
         e.preventDefault();
@@ -17,7 +17,7 @@ const SearchBar = () => {
         if (searchType === "Countries") {
             dispatch(getCountriesByName(inputValue));
         } else if (searchType === "Activities") {
-            dispatch(getActivitiesByName(inputValue)); // Aquí despachamos la acción para buscar países por actividad
+            dispatch(getActivitiesByName(inputValue)); 
         }
 
     }
@@ -25,7 +25,7 @@ const SearchBar = () => {
 
     function handleTypeChange(e) {
         setSearchType(e.target.value);
-        setInput(""); // Reinicia el valor de búsqueda al cambiar el tipo
+        setInput(""); 
     }
 
     return (

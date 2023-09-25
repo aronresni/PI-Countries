@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getCountries } from '../../redux/actions/actions';
+import { getCountries, getActivities } from '../../redux/actions/actions';
 import './CountriesCard.css';
 
 const CountriesCard = () => {
     const dispatch = useDispatch();
     const countries = useSelector((state) => state.allCountries);
 
+
     const [currentPage, setCurrentPage] = useState(1);
     const cardsPerPage = 10;
 
     useEffect(() => {
         dispatch(getCountries());
+        dispatch(getActivities())
     }, [dispatch]);
 
- 
+
     const indexOfLastCard = currentPage * cardsPerPage;
     const indexOfFirstCard = indexOfLastCard - cardsPerPage;
     const currentCards = countries.slice(indexOfFirstCard, indexOfLastCard);
@@ -28,8 +30,8 @@ const CountriesCard = () => {
         <div className="container-cards">
 
             {currentCards.map((country) => (
-                <Link to={`/country/${country.id}`}>
-                    <div key={country.id} className="flip-card">
+                <Link key={country.id} to={`/country/${country.id}`}>
+                    <div className="flip-card">
                         <div className="flip-card-inner">
                             <div className="flip-card-front">
                                 <img src={country.flag} alt={country.name} className="img-card" />

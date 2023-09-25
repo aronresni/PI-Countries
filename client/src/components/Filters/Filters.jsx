@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { filterContinent, orderPopulation, orderName } from '../../redux/actions/actions'
 import "./Filters.css"
 const Filters = () => {
-    const activities = useSelector(state => state.activities)
     const dispatch = useDispatch();
     const [selectedOrderName, setSelectedOrderName] = useState("Select");
     const [selectedOrderPopulation, setSelectedOrderPopulation] = useState("Select");

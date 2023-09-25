@@ -4,7 +4,9 @@ import { GET_COUNTRIES, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITI
 const initialState = {
     countries: [],
     countriesSelected: [],
+    countriesActivity: [],
     allCountries: [],
+    countriesBackUp : [],
     country: [],
     activities: [],
     error: null,
@@ -19,7 +21,9 @@ const countriesReducer = (state = initialState, action) => {
                 countries: action.payload,
                 allCountries: action.payload,
                 countriesSelected: action.payload,
-            }
+                countriesActivity: action.payload,
+                countriesBackUp: action.payload,
+                        }
         case GET_COUNTRIES_BY_ID:
             return {
                 ...state,
@@ -31,12 +35,14 @@ const countriesReducer = (state = initialState, action) => {
                 allCountries: action.payload
             }
         case GET_ACTIVITIES_BY_NAME:
-            const activityName = action.payload.toLowerCase(); // Normalizar el nombre de actividad
 
-            // Filtrar las actividades por nombre
-            const filteredActivities = state.activities.filter(activity =>
-                activity.name.toLowerCase() === activityName
-            );
+            const activityName = action.payload.toLowerCase(); 
+            const filteredActivities = [...state.activities].filter(activity =>
+              activity.name.toLowerCase().includes(activityName) 
+       //       {console.log(activity.name);
+       //   console.log(activityName);}
+                );
+                console.log(state.activities);
             return {
                 ...state,
                 allCountries: filteredActivities
@@ -78,12 +84,13 @@ const countriesReducer = (state = initialState, action) => {
 
 
         case FILTER_BY_CONTINENT:
-            const allCountries = state.allCountries;
+            const allCountries = state.countriesBackUp;
             const filterContinent = action.payload === "All" ? allCountries : allCountries.filter(element => element.continent === action.payload)
             return {
                 ...state,
                 allCountries: filterContinent
             }
+
 
         default:
             return { ...state }
