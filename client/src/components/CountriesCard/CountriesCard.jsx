@@ -8,7 +8,6 @@ const CountriesCard = () => {
     const dispatch = useDispatch();
     const countries = useSelector((state) => state.allCountries);
 
-    // Estado local para la paginación
     const [currentPage, setCurrentPage] = useState(1);
     const cardsPerPage = 10;
 
@@ -16,12 +15,11 @@ const CountriesCard = () => {
         dispatch(getCountries());
     }, [dispatch]);
 
-    // Calcula el índice inicial y final de las tarjetas a mostrar
+ 
     const indexOfLastCard = currentPage * cardsPerPage;
     const indexOfFirstCard = indexOfLastCard - cardsPerPage;
     const currentCards = countries.slice(indexOfFirstCard, indexOfLastCard);
 
-    // Cambia la página actual
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
     };

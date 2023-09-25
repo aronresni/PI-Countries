@@ -14,12 +14,12 @@ const SearchBar = () => {
         const inputValue = e.target.value;
         setInput(inputValue);
 
-        // Decide qué acción de búsqueda se debe despachar según el tipo seleccionado
         if (searchType === "Countries") {
             dispatch(getCountriesByName(inputValue));
         } else if (searchType === "Activities") {
             dispatch(getActivitiesByName(inputValue)); // Aquí despachamos la acción para buscar países por actividad
         }
+
     }
    
 

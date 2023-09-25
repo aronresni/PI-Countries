@@ -7,7 +7,7 @@ import validation from "./validations"
 const Form = () => {
 
     const dispatch = useDispatch();
-    const countries = useSelector(state => state.countries);
+    const countries = useSelector(state => state.countriesSelected);
 
     const [errors, setErrors] = useState({});
     const [selected, setSelected] = useState("");
@@ -145,7 +145,7 @@ const Form = () => {
                         <option value="4">⭐️⭐️⭐️⭐️</option>
                         <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
                     </select>
-                    {console.log(form)}
+                  
 
                     {errors.difficulty && <p className='errors'>{errors.difficulty}</p>}
                 </div>

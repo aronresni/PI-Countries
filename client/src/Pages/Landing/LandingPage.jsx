@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 import "./LandingPage.css"
 const LandingPage = () => {
     return (
-        <div>
+        <div className='landing'>
             <div className='button-container'>
+
                 <Link to="/home">
                     <button className="button" data-text="Awesome">
                         <span className="actual-text">&nbsp;Start&nbsp;</span>

@@ -3,6 +3,7 @@ import { GET_COUNTRIES, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITI
 
 const initialState = {
     countries: [],
+    countriesSelected: [],
     allCountries: [],
     country: [],
     activities: [],
@@ -17,6 +18,7 @@ const countriesReducer = (state = initialState, action) => {
                 ...state,
                 countries: action.payload,
                 allCountries: action.payload,
+                countriesSelected: action.payload,
             }
         case GET_COUNTRIES_BY_ID:
             return {

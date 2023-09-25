@@ -1,4 +1,9 @@
 /* === removing default button style ===*/
+.landing{
+  color: white;
+  background: linear-gradient(90deg, rgba(123,81,242,1) 0%, rgba(43,28,84,1) 0%, rgba(0,0,0,1) 100%);
+}
+
 .button {
   margin: 0;
   height: auto;
@@ -21,6 +26,9 @@
   text-transform: uppercase;
   color: transparent;
   -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+.button:focus {
+  outline: none;
 }
 /* this is the text, when you hover on button */
 .hover-text {
@@ -52,6 +60,7 @@ input{
     padding: 1rem;
     border-radius: 1rem;
     border: none;
-    box-shadow: 2px 2px 30px 2px ;
+
   
 }
+
