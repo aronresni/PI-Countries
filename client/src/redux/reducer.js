@@ -1,5 +1,5 @@
 
-import { GET_COUNTRIES,GET_ACTIVITIES_BY_ID, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITIES, POST_ACTIVITY, FILTER_BY_CONTINENT, ORDER_BY_NAME, ORDER_BY_POPULATION, GET_ACTIVITIES_BY_NAME } from "./actions/constants";
+import { GET_COUNTRIES, GET_ACTIVITIES_BY_ID, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITIES, POST_ACTIVITY, FILTER_BY_CONTINENT, ORDER_BY_NAME, ORDER_BY_POPULATION, GET_ACTIVITIES_BY_NAME } from "./actions/constants";
 
 const initialState = {
     countries: [],
@@ -9,6 +9,7 @@ const initialState = {
     countriesBackUp: [],
     country: [],
     activities: [],
+    actividad: [],
     error: null,
 };
 
@@ -35,31 +36,45 @@ const countriesReducer = (state = initialState, action) => {
                 ...state,
                 allCountries: action.payload
             }
-        case GET_ACTIVITIES_BY_NAME:
 
+
+        case GET_ACTIVITIES:
+          
+            return {
+                ...state,
+                activities: action.payload,
+                actividad: action.payload,
+
+            }
+        case GET_ACTIVITIES_BY_ID:
+            const activityId = parseInt(action.payload);
+            const actividadFiltrada = state.activities.find(actividad => actividad.id === activityId);
+            console.log(activityId);
+            console.log(actividadFiltrada);
+           console.log(state.actividad);
+           console.log(state.activities);
+            return {
+                ...state,
+                actividad: actividadFiltrada,
+
+            };
+
+
+        case GET_ACTIVITIES_BY_NAME:
             const activityName = action.payload.toLowerCase();
             const filteredActivities = [...state.activities].filter(activity =>
                 activity.name.toLowerCase().includes(activityName)
-
+       
             );
-            console.log(state.activities);
             return {
                 ...state,
                 allCountries: filteredActivities
             }
 
 
-        case GET_ACTIVITIES:
-            return {
-                ...state,
-                activities: action.payload
-            }
 
-        case GET_ACTIVITIES_BY_ID: 
-        return {
-            ...state,
-            activities: action.payload
-        }
+
+
 
 
         case POST_ACTIVITY:

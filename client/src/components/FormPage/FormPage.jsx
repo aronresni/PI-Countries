@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import validation from "./validations"
-import Swal from 'sweetalert2'
+
 
 const Form = () => {
 
@@ -92,13 +92,6 @@ const Form = () => {
             season: "",
             countries: [],
         })
-        Swal.fire({
-            icon: 'submit',
-            title: 'Successfully created activity',
-            text: 'Create other activity or go to see countries',
-            footer: '<a href="/form"><button>Create other Activity</button></a><a href="/home"><button>Go to see countries</button></a>'
-        })
-
     }
 
     const deleteCountry = (event) => {

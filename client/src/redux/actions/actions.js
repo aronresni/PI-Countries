@@ -95,7 +95,12 @@ export const orderPopulation = (payload) => {
     return { type: ORDER_BY_POPULATION, payload }
 }
 
-
+export const getActivitiesById = (id)=>{
+    return{
+        type: GET_ACTIVITIES_BY_ID,
+        payload: id,
+    }
+}
 
 export const getActivitiesByName = (activityName) => {
     return {
