@@ -40,8 +40,8 @@ const CountriesCard = () => {
 
                             <div className="activity-card">
                                 <h2>{country.name}</h2>
-                                <p>Difficulty: {country.difficulty}Stars</p>
-                                <p>Duration: {country.duration}Hours</p>
+                                <p>Difficulty: {country.difficulty} Stars</p>
+                                <p>Duration: {country.duration} Hours</p>
                                 <p>Season: {country.season}</p>
                             </div>
                         ) : (

@@ -1,12 +1,12 @@
 
-import { GET_COUNTRIES, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITIES, POST_ACTIVITY, FILTER_BY_CONTINENT, ORDER_BY_NAME, ORDER_BY_POPULATION, GET_ACTIVITIES_BY_NAME } from "./actions/constants";
+import { GET_COUNTRIES,GET_ACTIVITIES_BY_ID, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITIES, POST_ACTIVITY, FILTER_BY_CONTINENT, ORDER_BY_NAME, ORDER_BY_POPULATION, GET_ACTIVITIES_BY_NAME } from "./actions/constants";
 
 const initialState = {
     countries: [],
     countriesSelected: [],
     countriesActivity: [],
     allCountries: [],
-    countriesBackUp : [],
+    countriesBackUp: [],
     country: [],
     activities: [],
     error: null,
@@ -23,7 +23,8 @@ const countriesReducer = (state = initialState, action) => {
                 countriesSelected: action.payload,
                 countriesActivity: action.payload,
                 countriesBackUp: action.payload,
-                        }
+
+            }
         case GET_COUNTRIES_BY_ID:
             return {
                 ...state,
@@ -36,12 +37,12 @@ const countriesReducer = (state = initialState, action) => {
             }
         case GET_ACTIVITIES_BY_NAME:
 
-            const activityName = action.payload.toLowerCase(); 
+            const activityName = action.payload.toLowerCase();
             const filteredActivities = [...state.activities].filter(activity =>
-              activity.name.toLowerCase().includes(activityName) 
-    
-                );
-                console.log(state.activities);
+                activity.name.toLowerCase().includes(activityName)
+
+            );
+            console.log(state.activities);
             return {
                 ...state,
                 allCountries: filteredActivities
@@ -53,6 +54,14 @@ const countriesReducer = (state = initialState, action) => {
                 ...state,
                 activities: action.payload
             }
+
+        case GET_ACTIVITIES_BY_ID: 
+        return {
+            ...state,
+            activities: action.payload
+        }
+
+
         case POST_ACTIVITY:
             return { ...state }
         case ORDER_BY_NAME:
