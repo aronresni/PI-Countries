@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+
 import { getCountries, getActivities } from '../../redux/actions/actions';
 import './CountriesCard.css';
 
@@ -8,10 +9,12 @@ const CountriesCard = () => {
     const dispatch = useDispatch();
     const countries = useSelector((state) => state.allCountries);
 
+    const isActivity = (country) => {
+        return country.hasOwnProperty('season');
+    }
 
     const [currentPage, setCurrentPage] = useState(1);
     const cardsPerPage = 10;
-
     useEffect(() => {
         dispatch(getCountries());
         dispatch(getActivities())
@@ -28,30 +31,42 @@ const CountriesCard = () => {
 
     return (
         <div className="container-cards">
+               <div className='cards'>
 
-            {currentCards.map((country) => (
-                <Link key={country.id} to={`/country/${country.id}`}>
-                    <div className="flip-card">
-                        <div className="flip-card-inner">
-                            <div className="flip-card-front">
-                                <img src={country.flag} alt={country.name} className="img-card" />
+             
+                {currentCards.map((country) => (
+                    <Link  key={country.id} to={isActivity(country) ? `/activity/${country.id}` : `/country/${country.id}`}>
+                        {isActivity(country) ? (
+
+                            <div className="activity-card">
                                 <h2>{country.name}</h2>
+                                <p>Difficulty: {country.difficulty}Stars</p>
+                                <p>Duration: {country.duration}Hours</p>
+                                <p>Season: {country.season}</p>
                             </div>
+                        ) : (
+                            <div className="flip-card">
+                                <div className="flip-card-inner">
+                                    <div className="flip-card-front">
+                                        <img src={country.flag} alt={country.name} className="img-card" />
+                                        <h2>{country.name}</h2>
+                                    </div>
 
 
-                            <div className="flip-card-back">
-                                <p>Population: {country.population}</p>
-                                <p>Continent: {country.continent}</p>
-                                <p>Region: {country.subregion}</p>
-                                <p>Area: {country.area}</p>
+                                    <div className="flip-card-back">
+                                        <p>Population: {country.population}</p>
+                                        <p>Continent: {country.continent}</p>
+                                        <p>Region: {country.subregion}</p>
+                                        <p>Area: {country.area}</p>
 
+                                    </div>
+
+                                </div>
                             </div>
-
-                        </div>
-                    </div>
-                </Link>
-            ))}
-
+                        )}
+                    </Link>
+                ))}
+                </div>
             <div className="pagination">
                 {Array.from({ length: Math.ceil(countries.length / cardsPerPage) }).map(
                     (_, index) => (

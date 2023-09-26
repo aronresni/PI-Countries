@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import { Home, LandingPage, DetailPage, FormActivity } from "./Pages/index"
+import { Home, LandingPage, DetailPage, FormActivity, DetailActivity } from "./Pages/index"
 
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/home' element={<Home />} />
         <Route path='/country/:id' element={<DetailPage />} />
+        <Route path='/activity/:id' element={<DetailActivity/>}/>
         <Route path="/form" element={<FormActivity />} />
       </Routes>
     </div>
