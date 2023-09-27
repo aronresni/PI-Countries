@@ -31,11 +31,11 @@ const CountriesCard = () => {
 
     return (
         <div className="container-cards">
-               <div className='cards'>
+            <div className='cards'>
 
-             
+
                 {currentCards.map((country) => (
-                    <Link  key={country.id} to={isActivity(country) ? `/activity/${country.id}` : `/country/${country.id}`}>
+                    <Link key={country.id} to={isActivity(country) ? `/activity/${country.id}` : `/country/${country.id}`}>
                         {isActivity(country) ? (
 
                             <div className="activity-card">
@@ -66,20 +66,39 @@ const CountriesCard = () => {
                         )}
                     </Link>
                 ))}
-                </div>
+            </div>
             <div className="pagination">
+                {currentPage > 1 && (
+                    <button
+                        onClick={() => paginate(currentPage - 1)}
+                        className="page-button"
+                    >
+                        Previous
+                    </button>
+                )}
+
                 {Array.from({ length: Math.ceil(countries.length / cardsPerPage) }).map(
                     (_, index) => (
                         <button
                             key={index}
                             onClick={() => paginate(index + 1)}
-                            className={`page-button ${currentPage === index + 1 ? 'active' : ''} paginado`}
+                            className={`page-button ${currentPage === index + 1 ? 'active' : ''}`}
                         >
                             {index + 1}
                         </button>
                     )
                 )}
+
+                {currentPage < Math.ceil(countries.length / cardsPerPage) && (
+                    <button
+                        onClick={() => paginate(currentPage + 1)}
+                        className="page-button"
+                    >
+                        Next
+                    </button>
+                )}
             </div>
+
         </div>
     );
 };
