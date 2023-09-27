@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { postActivity, getCountries } from "../../redux/actions/actions";
 import { useEffect } from "react";
-import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import validation from "./validations"
+import "./FormPage.css"
 
 
 const Form = () => {
@@ -183,6 +183,7 @@ const Form = () => {
                             return (
                                 <option key={country.name}>
                                     {country.name}
+                                    
 
                                 </option>
                             )
@@ -195,7 +196,7 @@ const Form = () => {
                         return (
                             <div className='country-selector' key={country}>
                                 <p>{country}</p>
-                                <img src={country.flag} />
+                                <img src={country.flag} className="flag"/>
                                 <button className='btn-country-selector' onClick={deleteCountry} value={country}> X </button>
                             </div>
                         )

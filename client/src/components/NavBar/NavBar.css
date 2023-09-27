@@ -19,3 +19,22 @@
     transform: rotate(360deg);
   }
 }
+
+.btn-activity{
+  border: 2px solid #8707ff;
+  border-radius: 10px;
+  padding: 10px 25px;
+  background: transparent;
+  max-width: 190px;
+}
+
+.btn-countries{
+  border: 2px solid #8707ff;
+  border-radius: 10px;
+  padding: 10px 25px;
+  background: transparent;
+  max-width: 190px;
+
+
+}
+

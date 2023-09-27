@@ -15,32 +15,42 @@ const CardDetail = () => {
 
     return (
         <div className='detail-container'>
-            <div key={country.id}>
-                <img className='flag-img' src={country.flag} alt={`Flag of ${country.name}`} />
-                <h2>{country.name}</h2>
-                <p>Capital: {country.capital}</p>
-                <p>Subregion: {country.subregion}</p>
-            </div>
-            <div>
-                <h3>Activities:</h3>
-                {country && country.Activities && country.Activities.length > 0 ? (
-                    <ul>
-                        {country.Activities.map((activity) => (
-                            <li key={activity.id}>
-                                <p>Name: {activity.name}</p>
-                                <p>Difficulty: {activity.difficulty}</p>
-                                <p>Duration: {activity.duration} hours</p>
-                                <p>Season: {activity.season}</p>
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>No activities available for this country.</p>
-                )}
+            <div className='detail-container'>
+                <div className='country-detail'>
+                    <img className='flag-img' src={country.flag} alt={`Flag of ${country.name}`} />
+                    <div className='card-info'>
+                        <h2>{country.name}</h2>
+                        <p>ID: {country.id}</p>
+                        <p>Continent: {country.continent}</p>
+                        <p>Capital: {country.capital}</p>
+                        <p>Subregion: {country.subregion}</p>
+                        {country.area && <p>Área: {country.area}</p>}
+                        <p>Población: {country.population}</p>
+                    </div>
+                </div>
+                <div>
+
+                    <h3>Activities:</h3>
+                    {country && country.Activities && country.Activities.length > 0 ? (
+                        <ul>
+                            {country.Activities.map((activity) => (
+                                <li key={activity.id}>
+                                    <p>Name: {activity.name}</p>
+                                    <p>Difficulty: {activity.difficulty}</p>
+                                    <p>Duration: {activity.duration} hours</p>
+                                    <p>Season: {activity.season}</p>
+                                </li>
+                            ))}
+                        </ul>
+
+                    ) : (
+                        <p>No activities available for this country.</p>
+                    )}
+                </div>
             </div>
 
             <Link to="/home">
-                <button>Volver a la lista de países</button>
+                <button className='btn-home'>Back to home</button>
             </Link>
         </div>
 

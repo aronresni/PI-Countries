@@ -17,13 +17,13 @@ const NavBar = () => {
             {isActivityPage ? null : (
                 <div>
                     <Link to="/form">
-                        <button>ADD ACTIVITY</button>
+                        <button className='btn-activity'>ADD ACTIVITY</button>
                     </Link>
                 </div>
             )}
             {isActivityPage && (
                 <Link to="/home">
-                    <button>COUNTRIES</button>
+                    <button className='btn-countries'>COUNTRIES</button>
                 </Link>
             )}
         </div>

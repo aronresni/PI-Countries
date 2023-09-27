@@ -13,9 +13,10 @@ const SearchBar = () => {
         e.preventDefault();
         const inputValue = e.target.value;
         setInput(inputValue);
-
+       
         if (searchType === "Countries") {
-            dispatch(getCountriesByName(inputValue));
+           
+            dispatch(getCountriesByName(inputValue))
         } else if (searchType === "Activities") {
             dispatch(getActivitiesByName(inputValue)); 
         }
@@ -26,6 +27,7 @@ const SearchBar = () => {
     function handleTypeChange(e) {
         setSearchType(e.target.value);
         setInput(""); 
+        
     }
 
     return (
