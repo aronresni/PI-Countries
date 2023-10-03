@@ -1,5 +1,5 @@
 
-import { GET_COUNTRIES, GET_ACTIVITIES_BY_ID, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITIES, POST_ACTIVITY, FILTER_BY_CONTINENT, ORDER_BY_NAME, ORDER_BY_POPULATION, GET_ACTIVITIES_BY_NAME } from "./actions/constants";
+import { GET_COUNTRIES_BY_ACTIVITY, GET_COUNTRIES, GET_ACTIVITIES_BY_ID, GET_COUNTRIES_BY_ID, GET_COUNTRIES_BY_NAME, GET_ACTIVITIES, POST_ACTIVITY, FILTER_BY_CONTINENT, ORDER_BY_NAME, ORDER_BY_POPULATION, GET_ACTIVITIES_BY_NAME } from "./actions/constants";
 
 const initialState = {
     countries: [],
@@ -15,6 +15,30 @@ const initialState = {
 
 const countriesReducer = (state = initialState, action) => {
     switch (action.type) {
+
+        case GET_COUNTRIES_BY_ACTIVITY:
+            const name = action.payload.toLowerCase();
+            const activityFilter = [...state.activities].filter(activity =>
+                activity.name.toLowerCase().includes(name))
+            const activityCountry = activityFilter[0].Countries
+            const countryNames = activityCountry.map(country => country.name);
+            console.log(countryNames);
+            const countryFilter = state.countriesBackUp.filter(element =>
+                countryNames.includes(element.name)
+              );
+            return {
+                ...state,
+                allCountries: countryFilter
+            }
+
+
+
+
+
+
+
+
+
 
         case GET_COUNTRIES:
             return {
@@ -39,7 +63,7 @@ const countriesReducer = (state = initialState, action) => {
 
 
         case GET_ACTIVITIES:
-          
+
             return {
                 ...state,
                 activities: action.payload,
@@ -51,8 +75,8 @@ const countriesReducer = (state = initialState, action) => {
             const actividadFiltrada = state.activities.find(actividad => actividad.id === activityId);
             console.log(activityId);
             console.log(actividadFiltrada);
-           console.log(state.actividad);
-           console.log(state.activities);
+            console.log(state.actividad);
+            console.log(state.activities);
             return {
                 ...state,
                 actividad: actividadFiltrada,
@@ -64,7 +88,7 @@ const countriesReducer = (state = initialState, action) => {
             const activityName = action.payload.toLowerCase();
             const filteredActivities = [...state.activities].filter(activity =>
                 activity.name.toLowerCase().includes(activityName)
-       
+
             );
             return {
                 ...state,

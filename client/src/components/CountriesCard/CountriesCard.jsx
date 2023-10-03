@@ -18,7 +18,12 @@ const CountriesCard = () => {
     useEffect(() => {
         dispatch(getCountries());
         dispatch(getActivities())
+
     }, [dispatch]);
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [countries]);
 
 
     const indexOfLastCard = currentPage * cardsPerPage;

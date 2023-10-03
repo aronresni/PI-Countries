@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { filterContinent, orderPopulation, orderName } from '../../redux/actions/actions'
+import { filterContinent, orderPopulation, orderName, getCountryByActivity } from '../../redux/actions/actions'
 import "./Filters.css"
 const Filters = () => {
     const dispatch = useDispatch();
     const [selectedOrderName, setSelectedOrderName] = useState("Select");
     const [selectedOrderPopulation, setSelectedOrderPopulation] = useState("Select");
     const [selectedContinent, setSelectedContinent] = useState("All");
-
+    const [selectedActivity, setSelectedActivity] = useState("Select activity")
+    const activities = useSelector(state => state.activities)
 
     function handleFilter(e) {
         const selectedValue = e.target.value;
@@ -32,7 +33,13 @@ const Filters = () => {
         dispatch(orderName(selectedValue));
     }
 
+    function handleActivity(e) {
 
+        const selectedValue = e.target.value;
+        setSelectedOrderName(selectedValue)
+        dispatch(getCountryByActivity(selectedValue))
+        console.log(selectedValue);
+    }
 
     return (
         <div className='filter-container'>
@@ -69,6 +76,21 @@ const Filters = () => {
                     <option value="Europe">Europe</option>
                     <option value="Oceania">Oceanía</option>
                 </select>
+            </div>
+
+
+
+            <div>
+                <select value={selectedActivity} onChange={handleActivity}>
+                    <option > Select activity</option>
+                    {activities.map((activity) => {
+                        return (<option value={activity.name} key={activity.name}>{activity.name}</option>)
+                    })}
+
+                </select>
+
+
+
             </div>
         </div>
     )

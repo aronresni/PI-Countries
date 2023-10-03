@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getActivitiesByName, getCountriesByName } from '../../redux/actions/actions'; 
+import { getActivitiesByName, getCountriesByName, getCountries } from '../../redux/actions/actions'; 
 
 const SearchBar = () => {
     const dispatch = useDispatch();
@@ -27,6 +27,7 @@ const SearchBar = () => {
     function handleTypeChange(e) {
         setSearchType(e.target.value);
         setInput(""); 
+        dispatch(getCountries())
         
     }
 

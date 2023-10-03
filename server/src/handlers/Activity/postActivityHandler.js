@@ -7,6 +7,8 @@ const postActivityHandler = async (req, res) => {
             return res.status(400).json({ error: "Faltan campos obligatorios o países." })
         }
         const createdActivity = await postActivity.postActivity(name, difficulty, duration, season, countries);
+        if(createdActivity === "La actividad ya existe") return res.status(404).json(({error: "La actividad ya existe"}))
+        
         res.status(200).json(createdActivity)
 
 
@@ -18,4 +20,4 @@ const postActivityHandler = async (req, res) => {
 
 }
 
-module.exports = postActivityHandler
+module.exports = postActivityHandler    
