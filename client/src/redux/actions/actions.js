@@ -5,14 +5,13 @@ import {
     ORDER_BY_POPULATION, ORDER_BY_NAME, GET_ACTIVITIES_BY_NAME, GET_ACTIVITIES_BY_ID, GET_COUNTRIES_BY_ACTIVITY
 } from "./constants"
 
-const countriesurl = "http://localhost:3001/countries"
-const activityurl = "http://localhost:3001/activity"
+
 
 
 export const getCountries = () => {
     return async function (dispatch) {
         try {
-            const res = await axios.get(`${countriesurl}/allcountries`)
+            const res = await axios.get(`countries/allcountries`)
             return dispatch({
                 type: GET_COUNTRIES,
                 payload: res.data
@@ -29,7 +28,7 @@ export const getCountries = () => {
 export const getCountriesByName = (name) => {
     return async function (dispatch) {
         try {
-            const res = await axios.get(`${countriesurl}/name?name=${name}`)
+            const res = await axios.get(`countries/name?name=${name}`)
             return dispatch({
                 type: GET_COUNTRIES_BY_NAME,
                 payload: res.data
@@ -45,7 +44,7 @@ export const getCountriesByName = (name) => {
 export const getCountriesById = (id) => {
     return async function (dispatch) {
         try {
-            const res = await axios.get(`${countriesurl}/${id}`)
+            const res = await axios.get(`countries/${id}`)
             return dispatch({
                 type: GET_COUNTRIES_BY_ID,
                 payload: res.data
@@ -60,7 +59,7 @@ export const getCountriesById = (id) => {
 }
 export const getActivities = () => {
     return async function (dispatch) {
-        let json = await axios.get(`${activityurl}/activities`)
+        let json = await axios.get(`activity/activities`)
         const activity = json.data
         return dispatch({
             type: GET_ACTIVITIES,
@@ -72,7 +71,7 @@ export const getActivities = () => {
 //POST
 export const postActivity = (payload) => {
     return async function (dispatch) {
-        const json = await axios.post(`${activityurl}/activities`, payload);
+        const json = await axios.post(`activity/activities`, payload);
         const activity = json.data
         return dispatch({ type: POST_ACTIVITY, payload: activity })
     }
