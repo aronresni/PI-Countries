@@ -35,7 +35,6 @@ const countriesReducer = (state = initialState, action) => {
 
 
 
-case GET_ACTIVITIES
 
         case GET_COUNTRIES:
             return {
